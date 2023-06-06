@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
   const [success, setSuccess] = useState("");
@@ -72,7 +73,7 @@ const Login = () => {
               </div>
               <p className="text-red-600">{error}</p>
               <p className="text-green-600">{success}</p>
-              {/* <SocialLogin></SocialLogin> */}
+              <SocialLogin/>
             </form>
           </div>
         </div>
