@@ -7,6 +7,10 @@ import Login from '../pages/Home/Login&Signup/Login';
 import SignUp from '../pages/Home/Login&Signup/SignUp';
 import ClassesPage from '../pages/Classes/ClassesPage';
 import InstructorsPage from '../pages/Instructors/InstructorsPage';
+import MyCart from '../pages/UserCart/MyCart';
+import EnrolledClasses from '../pages/UserCart/EnrolledClasses';
+import AddClass from '../pages/Classes/AddClass';
+import MyClasses from '../pages/Classes/MyClasses';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +44,24 @@ const router = createBrowserRouter([
     // layouts for dashboard page
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "mycart",
+        element: <MyCart></MyCart>,
+      },
+      {
+        path: "enrolledclasses",
+        element: <EnrolledClasses></EnrolledClasses>,
+      },
+      {
+        path: "addclasses",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "myclasses",
+        element:<MyClasses></MyClasses>,
+      },
+    ],
   },
 ]);
 

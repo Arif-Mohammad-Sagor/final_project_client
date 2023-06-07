@@ -18,22 +18,53 @@ const ClassesPage = () => {
             .then((response) => setClasses(response.data));
     }, []);
 
-  const handleEnrollment = (id) => {
+  const handleEnrollment = (classItem) => {
+    const {
+      Name,
+      Image,
+      _id,
+      InstructorName,
+      AvailableSeats,
+      Price,
+      studentQty,
+    } = classItem;
+    // console.log(classItem);
     if (!user) {
-    Swal.fire({
-      text: "You have to loggin first",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Ok",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate('/login')
-        // Swal.fire("Deleted!", "Your file has been deleted.", "success");
-      }
-    });
+      Swal.fire({
+        text: "You have to loggin first",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login')
+          // Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }
+      });
     }
+    const selectedClassItem = {
+      Name,
+      Image,
+      ClassItemId: _id,
+      InstructorName,
+      AvailableSeats,
+      Price,
+      studentQty,
+      Email: user.email
+    };
+    // console.log(selectedClassItem);
+    axios
+      .post("http://localhost:4000/selectedClass", selectedClassItem)
+      .then((response) => {
+        // console.log(response, "", response.data)
+        if (response.data.insertedId) {
+          Swal.fire("Cool!", "You have added the class to cart !", "success");
+        }
+  });
+
+
   }
     return (
       <div className="grid grid-cols-3 mx-4 my-8 gap-y-8 justify-center">
@@ -60,7 +91,7 @@ const ClassesPage = () => {
                 <p className="text-sm">studentQty: {classItem.studentQty}</p>
                 <div className="card-actions justify-end">
                   <button
-                    onClick={() => handleEnrollment(`${classItem._id}`)}
+                    onClick={() => handleEnrollment(classItem)}
                     disabled={
                       classItem.AvailableSeats === 0 || isAdmin || isInstructor
                     }
