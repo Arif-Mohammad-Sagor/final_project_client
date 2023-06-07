@@ -1,0 +1,66 @@
+[
+  {
+    "Image": "https://cdn3.vectorstock.com/i/1000x1000/50/72/language-class-at-elementary-school-poster-vector-18635072.jpg",
+    "Name": "English",
+    "InstructorName": "John Doe",
+    "AvailableSeats": 10,
+    "Price": 99.99,
+    "studentQty": 20
+  },
+  {
+    "Image": "https://www.shutterstock.com/image-photo/language-school-concept-young-woman-260nw-351275894.jpg",
+    "Name": "Japanese",
+    "InstructorName": "Jane Smith",
+    "AvailableSeats": 5,
+    "Price": 79.99,
+    "studentQty": 15
+  },
+  {
+    "Image": "https://englishclassviaskype.com/wp-content/uploads/2019/01/learn-languages-online.jpg",
+    "Name": "Korean",
+    "InstructorName": "Alice Johnson",
+    "AvailableSeats": 8,
+    "Price": 119.99,
+    "studentQty": 12
+  },
+  {
+    "Image": "https://www.shutterstock.com/image-photo/language-school-concept-young-woman-260nw-351275894.jpg",
+    "Name": "Spanish",
+    "InstructorName": "Robert Brown",
+    "AvailableSeats": 12,
+    "Price": 89.99,
+    "studentQty": 18
+  },
+  {
+    "Image": "https://cdn3.vectorstock.com/i/1000x1000/50/72/language-class-at-elementary-school-poster-vector-18635072.jpg",
+    "Name": "French",
+    "InstructorName": "Emily Davis",
+    "AvailableSeats": 3,
+    "Price": 129.99,
+    "studentQty": 8
+  },
+  {
+    "Image": "https://englishclassviaskype.com/wp-content/uploads/2019/01/learn-languages-online.jpg",
+    "Name": "German",
+    "InstructorName": "Michael Johnson",
+    "AvailableSeats": 6,
+    "Price": 109.99,
+    "studentQty": 10
+  },
+  {
+    "Image": "https://www.shutterstock.com/image-photo/language-school-concept-young-woman-260nw-351275894.jpg",
+    "Name": "Chinese",
+    "InstructorName": "Sara Anderson",
+    "AvailableSeats": 7,
+    "Price": 94.99,
+    "studentQty": 14
+  },
+  {
+    "Image": "https://englishclassviaskype.com/wp-content/uploads/2019/01/learn-languages-online.jpg",
+    "Name": "Italian",
+    "InstructorName": "Daniel Lee",
+    "AvailableSeats": 4,
+    "Price": 119.99,
+    "studentQty": 9
+  }
+]
