@@ -49,18 +49,19 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
       const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
+          setUser(currentUser);
+          console.log('from onAuth',currentUser);
 
-        // if (currentUser) {
-        //   axios
-        //     .post("http://localhost:5000/jwt", { email: currentUser.email })
-        //     .then((data) => {
-        //       localStorage.setItem("access_token", data.data.token);
-        //       setLoading(false);
-        //     });
-        // } else {
-        //   localStorage.removeItem("access_token");
-        // }
+        if (currentUser) {
+          axios
+            .post("http://localhost:4000/jwt", { email: currentUser.email })
+            .then((data) => {
+              localStorage.setItem("access_token", data.data.token);
+              setLoading(false);
+            });
+        } else {
+          localStorage.removeItem("access_token");
+        }
       });
       return () => {
         unsubscibe();
