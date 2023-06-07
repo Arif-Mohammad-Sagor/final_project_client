@@ -1,0 +1,87 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "image": "https://media.istockphoto.com/id/1334983466/photo/east-asian-teacher.jpg?s=1024x1024&w=is&k=20&c=0xBcEifcOVITxFUzBuwjo8Q87-7hyavDLfq_nNgza9g=",
+    "classesQnty": 5,
+    "classesTakenByInstructors": ["English", "Spanish", "French"]
+  },
+  {
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "image": "https://media.istockphoto.com/id/1194202466/photo/happy-young-beautiful-blonde-businesswoman-showing-something.jpg?s=1024x1024&w=is&k=20&c=tsuPBKmC_doK0myXncmvc9mDr3DmzE6J6JXelT6cihg=",
+    "classesQnty": 3,
+    "classesTakenByInstructors": ["German", "Italian"]
+  } ,
+   {
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "image": "https://media.istockphoto.com/id/1363488205/photo/back-to-school-knowledge-day-childhood-education-kid-in-uniform-september-1.jpg?s=1024x1024&w=is&k=20&c=qLbXadzjV_R2TJwtZ7bl4lvXdC2HXvINyMAo0kuzrVs=",
+    "classesQnty": 4,
+    "classesTakenByInstructors": ["Chinese", "Japanese"]
+  },
+  {
+    "name": "Robert Brown",
+    "email": "robert.brown@example.com",
+    "image": "https://media.istockphoto.com/id/1334983466/photo/east-asian-teacher.jpg?s=1024x1024&w=is&k=20&c=0xBcEifcOVITxFUzBuwjo8Q87-7hyavDLfq_nNgza9g=",
+    "classesQnty": 2,
+    "classesTakenByInstructors": ["Spanish", "French"]
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emily.davis@example.com",
+    "image": "https://media.istockphoto.com/id/1194202466/photo/happy-young-beautiful-blonde-businesswoman-showing-something.jpg?s=1024x1024&w=is&k=20&c=tsuPBKmC_doK0myXncmvc9mDr3DmzE6J6JXelT6cihg=",
+    "classesQnty": 6,
+    "classesTakenByInstructors": ["German", "Russian"]
+  },
+  {
+    "name": "David Wilson",
+    "email": "david.wilson@example.com",
+    "image": "https://media.istockphoto.com/id/1363488205/photo/back-to-school-knowledge-day-childhood-education-kid-in-uniform-september-1.jpg?s=1024x1024&w=is&k=20&c=qLbXadzjV_R2TJwtZ7bl4lvXdC2HXvINyMAo0kuzrVs=",
+    "classesQnty": 1,
+    "classesTakenByInstructors": ["Spanish"]
+  },
+   {
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "image": "https://media.istockphoto.com/id/1334983466/photo/east-asian-teacher.jpg?s=1024x1024&w=is&k=20&c=0xBcEifcOVITxFUzBuwjo8Q87-7hyavDLfq_nNgza9g=",
+    "classesQnty": 3,
+    "classesTakenByInstructors": ["English", "French"]
+  },
+  {
+    "name": "Sara Anderson",
+    "email": "sara.anderson@example.com",
+    "image": "https://example.com/sara.jpg",
+    "classesQnty": 4,
+    "classesTakenByInstructors": ["Spanish", "Italian"]
+  },
+  {
+    "name": "Daniel Lee",
+    "email": "daniel.lee@example.com",
+    "image": "https://media.istockphoto.com/id/1334983466/photo/east-asian-teacher.jpg?s=1024x1024&w=is&k=20&c=0xBcEifcOVITxFUzBuwjo8Q87-7hyavDLfq_nNgza9g=",
+    "classesQnty": 2,
+    "classesTakenByInstructors": ["German", "Chinese"]
+  },
+  {
+    "name": "Sophia Rodriguez",
+    "email": "sophia.rodriguez@example.com",
+    "image": "https://media.istockphoto.com/id/1194202466/photo/happy-young-beautiful-blonde-businesswoman-showing-something.jpg?s=1024x1024&w=is&k=20&c=tsuPBKmC_doK0myXncmvc9mDr3DmzE6J6JXelT6cihg=",
+    "classesQnty": 5,
+    "classesTakenByInstructors": ["Spanish", "French"]
+  },
+  {
+    "name": "William Thompson",
+    "email": "william.thompson@example.com",
+    "image": "https://media.istockphoto.com/id/1457560727/photo/young-asian-woman-wearing-gray-shirt-pointing-at-something-on-green-screen.jpg?s=1024x1024&w=is&k=20&c=ufPfQVAm1Yr1lyjE1VkW6ZwF__bnsrcTuKny6QLjCII=",
+    "classesQnty": 3,
+    "classesTakenByInstructors": ["English", "Italian"]
+  },
+  {
+    "name": "Olivia Harris",
+    "email": "olivia.harris@example.com",
+    "image": "https://media.istockphoto.com/id/1363488205/photo/back-to-school-knowledge-day-childhood-education-kid-in-uniform-september-1.jpg?s=1024x1024&w=is&k=20&c=qLbXadzjV_R2TJwtZ7bl4lvXdC2HXvINyMAo0kuzrVs=",
+    "classesQnty": 4,
+    "classesTakenByInstructors": ["German", "Russian"]
+  }
+
+]
