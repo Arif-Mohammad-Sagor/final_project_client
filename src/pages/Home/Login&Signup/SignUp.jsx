@@ -1,16 +1,54 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../components/SocialLogin';
+import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+  const { createUser, updateUserProfile } = useAuth();
+  const navigate = useNavigate();
     const {
       register,
       handleSubmit,
       watch,
       formState: { errors },
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+     console.log(data);
+     createUser(data.email, data.password)
+       .then((result) => {
+         updateUserProfile(data.name, data.photo)
+           .then((result) => {
+             console.log(result);
+             const saveUser = { name: data.name, email: data.email };
+             console.log(saveUser);
+             axios
+               .post(`http://localhost:5000/users`, {
+                 saveUser,
+               })
+               .then(() => {});
+           })
+           .catch();
+         console.log(result);
+         Swal.fire({
+           icon: "success",
+           title: "Successfully user created",
+           text: "Cool",
+         });
+         navigate("/");
+       })
+       .catch((error) => {
+         Swal.fire({
+           icon: "error",
+           title: "Oops...",
+           text: `${error.message}`,
+         });
+       });
+  }
+
+
   return (
     <div className="px-16">
       <div className="hero min-h-screen bg-base-100">

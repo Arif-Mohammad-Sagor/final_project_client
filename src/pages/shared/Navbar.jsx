@@ -1,18 +1,21 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user,logOut} = useAuth();
+  const handleLogout = () => {
+    logOut()
+      .then()
+    .then()
+  }
+
+  console.log(user);
   const navItems = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      {/* <li>
-        <NavLink to="/login"> Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/signup">SignUp</NavLink>
-      </li> */}
       <li>
         <NavLink to="/instructors">Instructors</NavLink>
       </li>
@@ -52,20 +55,21 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-              <a className="normal-case text-2xl">
-                  Langu-Academy
-        </a>
+        <a className="normal-case text-2xl">Langu-Academy</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn btn-secondary">
-          Login
-        </Link>
-        <Link to="/signup" className="btn btn-secondary">
-          SignUp
-        </Link>
+        {user ? (
+          <Link onClick={handleLogout} className="btn btn-secondary">
+            Logout
+          </Link>
+        ) : (
+          <Link to="/signup" className="btn btn-secondary">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -5,17 +5,15 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-console.log(import.meta.env.VITE_SECRET_apiKey);
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_SECRET_apiKey,
-  authDomain:import.meta.env.VITE_SECRET_authDomain,
-  projectId:import.meta.env.VITE_SECRET_projectId,
-  storageBucket:import.meta.env.VITE_SECRET_storageBucket,
-  messagingSenderId:import.meta.env.VITE_SECRET_messagingSenderId,
-  appId:import.meta.env.VITE_SECRET_appId,
+  apiKey: "AIzaSyCspgPA56_ToxulkJiXkYShh_zwgPBDfD8",
+  authDomain: "complete-mern-project.firebaseapp.com",
+  projectId: "complete-mern-project",
+  storageBucket: "complete-mern-project.appspot.com",
+  messagingSenderId: "885404211211",
+  appId: "1:885404211211:web:377128e5e899425dc50f0e",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-export default auth;
+export const auth = getAuth(app);

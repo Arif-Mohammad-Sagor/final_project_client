@@ -1,14 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../../components/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const { signIn } = useAuth()
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (e) => {};
+  const handleLogin = (e) => {
+     e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(res => {
+                const user = res.user;
+                setSuccess("Successfully loggedIn")
+                setError('')
+             navigate(from,{replace:true})
+                console.log(user)
+            })
+            .catch(err => {
+                setError(err.message);
+                setSuccess('');
+        })
+
+  }
+
+
   return (
     <div className="px-16">
       <div className="hero min-h-screen bg-base-100">
