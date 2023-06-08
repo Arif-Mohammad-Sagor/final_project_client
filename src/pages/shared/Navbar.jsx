@@ -1,9 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useClassesLoader from "../hooks/useClassesLoader";
 
 const Navbar = () => {
-  const { user,logOut} = useAuth();
+  const { user, logOut } = useAuth();
+  const [data] = useClassesLoader();
+  console.log(data);
   const handleLogout = () => {
     logOut()
       .then()
@@ -62,9 +65,12 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <Link onClick={handleLogout} className="btn btn-secondary">
-            Logout
-          </Link>
+          <>
+            <p>{user.displayName}</p>
+            <Link onClick={handleLogout} className="btn btn-secondary">
+              Logout
+            </Link>
+          </>
         ) : (
           <Link to="/signup" className="btn btn-secondary">
             Login

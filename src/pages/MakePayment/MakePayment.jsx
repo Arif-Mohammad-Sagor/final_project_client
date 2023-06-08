@@ -6,13 +6,14 @@ import useClassesLoader from '../hooks/useClassesLoader';
 
 const MakePayment = () => {
     const [data] = useClassesLoader();
-    const totalPrice = data?.reduce((sum, item) => sum + item.Price, 0);
+  const totalPrice = data?.reduce((sum, item) => sum + item.Price, 0);
+  const price = parseInt(totalPrice).toFixed(2);
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK_KEY);
 
   return (
     <Elements stripe={stripePromise}>
-          <CheckoutForm data={data} price={ totalPrice} />
+      <CheckoutForm data={data} price={price} />
     </Elements>
   );
 }

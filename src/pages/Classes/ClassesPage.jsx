@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import useAuth from '../hooks/useAuth';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const ClassesPage = () => {
   const [classes, setClasses] = useState([]);
@@ -12,11 +12,11 @@ const ClassesPage = () => {
   const isAdmin = false;
   const isInstructor = false;
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:4000/classes")
-            .then((response) => setClasses(response.data));
-    }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/classes")
+      .then((response) => setClasses(response.data));
+  }, []);
 
   const handleEnrollment = (classItem) => {
     const {
@@ -39,7 +39,7 @@ const ClassesPage = () => {
         confirmButtonText: "Ok",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login')
+          navigate("/login");
           // Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
       });
@@ -52,59 +52,60 @@ const ClassesPage = () => {
       AvailableSeats,
       Price,
       studentQty,
-      Email: user.email
+      Email: user.email,
     };
     // console.log(selectedClassItem);
     axios
       .post("http://localhost:4000/selectedClass", selectedClassItem)
       .then((response) => {
-        // console.log(response, "", response.data)
+        console.log(response);
+
         if (response.data.insertedId) {
           Swal.fire("Cool!", "You have added the class to cart !", "success");
+        } else {
+          Swal.fire(`${response.data.message}`);
         }
-  });
-
-
-  }
-    return (
-      <div className="grid grid-cols-3 mx-4 my-8 gap-y-8 justify-center">
-        {classes &&
-          classes.map((classItem) => (
-            <div
-              key={classItem._id}
-              className={`card w-4/5 shadow-xl flex justify-center ${
-                classItem.AvailableSeats === 0 ? "bg-red-500" : " bg-base-100 "
-              }`}
-            >
-              <figure>
-                <img src={classItem.Image} alt="instuctors" />
-              </figure>
-              <div className="card-body">
-                <h2>CourseName: {classItem.Name}</h2>
-                <p className="text-sm">
-                  InstructorName: {classItem.InstructorName}
-                </p>
-                <p className="text-sm">
-                  AvailableSeats: {classItem.AvailableSeats}
-                </p>
-                <p className="text-sm">Price: ${classItem.Price}</p>
-                <p className="text-sm">studentQty: {classItem.studentQty}</p>
-                <div className="card-actions justify-end">
-                  <button
-                    onClick={() => handleEnrollment(classItem)}
-                    disabled={
-                      classItem.AvailableSeats === 0 || isAdmin || isInstructor
-                    }
-                    className="btn btn-primary"
-                  >
-                    Enroll{" "}
-                  </button>
-                </div>
+      });
+  };
+  return (
+    <div className="grid grid-cols-3 mx-4 my-8 gap-y-8 justify-center">
+      {classes &&
+        classes.map((classItem) => (
+          <div
+            key={classItem._id}
+            className={`card w-4/5 shadow-xl flex justify-center ${
+              classItem.AvailableSeats === 0 ? "bg-red-500" : " bg-base-100 "
+            }`}
+          >
+            <figure>
+              <img src={classItem.Image} alt="instuctors" />
+            </figure>
+            <div className="card-body">
+              <h2>CourseName: {classItem.Name}</h2>
+              <p className="text-sm">
+                InstructorName: {classItem.InstructorName}
+              </p>
+              <p className="text-sm">
+                AvailableSeats: {classItem.AvailableSeats}
+              </p>
+              <p className="text-sm">Price: ${classItem.Price}</p>
+              <p className="text-sm">studentQty: {classItem.studentQty}</p>
+              <div className="card-actions justify-end">
+                <button
+                  onClick={() => handleEnrollment(classItem)}
+                  disabled={
+                    classItem.AvailableSeats === 0 || isAdmin || isInstructor
+                  }
+                  className="btn btn-primary"
+                >
+                  Enroll{" "}
+                </button>
               </div>
             </div>
-          ))}
-      </div>
-    );
-}
+          </div>
+        ))}
+    </div>
+  );
+};
 
-export default ClassesPage
+export default ClassesPage;

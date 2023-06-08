@@ -49,28 +49,14 @@ const CheckoutForm = ({ data, price }) => {
       card,
     });
 
-    // const billingInfo = {
-    //   name: user?.displayName,
-    //   email: user?.email,
-    //   description: "online purchase of classes",
-    //   address: "Dhaka,Bangladesh",
-    // };
 
-    console.log(billingInfo);
 
     if (error) {
       console.log("[error]", error);
     } else {
         // console.log("[PaymentMethod]", paymentMethod);
     }
-    //   console.log(clientSecrect)
-    // const { paymentIntent, error: paymentIntentError } =
-    //   await stripe.confirmCardPayment(clientSecrect, {
-    //     payment_method: {
-    //       card: card,
-    //       billing_details: billingInfo,
-    //     },
-    //   });
+   
 
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecrect, {
@@ -88,8 +74,7 @@ const CheckoutForm = ({ data, price }) => {
        console.log(paymentIntent)
     if (paymentIntent.status === "succeeded") {
       setTransectionId(paymentIntent.id);
-      // console.log(paymentIntent)
-      // alert('your payment successully')
+
       const payment = {
         email: user?.email,
         transectionId: paymentIntent.id,
