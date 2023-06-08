@@ -36,6 +36,9 @@ const Dashboard = () => {
               <li>
                 <Link to="/dashboard/enrolledclasses">Enrolled Classes</Link>
               </li>
+              <li>
+                <Link to="/dashboard/paymenthistory"> Payment History</Link>
+              </li>
             </>
           ) : userRole === "instructor" ? (
             <>

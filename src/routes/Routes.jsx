@@ -13,6 +13,7 @@ import AddClass from '../pages/Classes/AddClass';
 import MyClasses from '../pages/Classes/MyClasses';
 import PrivateRoute from './PrivateRoute';
 import MakePayment from '../pages/MakePayment/MakePayment';
+import Mypayment from '../pages/UserCart/Mypayment';
 
 
 const router = createBrowserRouter([
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
   {
     // layouts for dashboard page
     path: "/dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "mycart",
@@ -62,13 +67,16 @@ const router = createBrowserRouter([
       },
       {
         path: "myclasses",
-        element:<MyClasses></MyClasses>,
+        element: <MyClasses></MyClasses>,
       },
       {
-        path: 'makepayment',
-        element:<MakePayment></MakePayment>
-      }
-
+        path: "makepayment",
+        element: <MakePayment></MakePayment>,
+      },
+      {
+        path: "paymenthistory",
+        element:<Mypayment></Mypayment>
+      },
     ],
   },
 ]);
