@@ -11,6 +11,9 @@ import MyCart from '../pages/UserCart/MyCart';
 import EnrolledClasses from '../pages/UserCart/EnrolledClasses';
 import AddClass from '../pages/Classes/AddClass';
 import MyClasses from '../pages/Classes/MyClasses';
+import PrivateRoute from './PrivateRoute';
+import MakePayment from '../pages/MakePayment/MakePayment';
+
 
 const router = createBrowserRouter([
   {
@@ -43,7 +46,7 @@ const router = createBrowserRouter([
   {
     // layouts for dashboard page
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: "mycart",
@@ -61,6 +64,11 @@ const router = createBrowserRouter([
         path: "myclasses",
         element:<MyClasses></MyClasses>,
       },
+      {
+        path: 'makepayment',
+        element:<MakePayment></MakePayment>
+      }
+
     ],
   },
 ]);

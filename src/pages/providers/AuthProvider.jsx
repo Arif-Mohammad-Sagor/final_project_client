@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
       const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
           setUser(currentUser);
-          console.log('from onAuth',currentUser);
+          // console.log('from onAuth',currentUser);
 
         if (currentUser) {
           axios
@@ -62,6 +62,7 @@ const AuthProvider = ({ children }) => {
         } else {
           localStorage.removeItem("access_token");
         }
+        setLoading(false);
       });
       return () => {
         unsubscibe();

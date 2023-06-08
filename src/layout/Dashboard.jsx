@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, } from 'react-router-dom';
+// import useClassesLoader from '../pages/hooks/useClassesLoader';
 
 const Dashboard = () => {
+  // const [data] = useClassesLoader();
+  // console.log(data);
   var userRole = 'student';
 
 
@@ -25,7 +28,7 @@ const Dashboard = () => {
           {userRole === "student" ? (
             <>
               <li>
-                <Link to="/dashboard"> Home</Link>
+                <Link to="/"> Home</Link>
               </li>
               <li>
                 <Link to="/dashboard/mycart"> MyCart</Link>

@@ -10,7 +10,7 @@ const SocialLogin = () => {
  const location = useLocation();
  const from = location.state?.from?.pathname || "/";
   const { googleSignIn } = useAuth()
-  
+
  const handleSocialLogin = () => {
    googleSignIn()
      .then((result) => {
@@ -20,12 +20,12 @@ const SocialLogin = () => {
          name: loggedUser.displayName,
          email: loggedUser.email,
        };
-       console.log(saveUser);
+      //  console.log(saveUser);
        axios
          .post(`http://localhost:5000/users`, { saveUser })
          .then((response) => {
            console.log(response);
-           navigate(from, { replace: true });
+           navigate(from, { replace: true } || '/');
          });
      })
      .catch((error) => {

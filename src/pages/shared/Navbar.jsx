@@ -10,7 +10,7 @@ const Navbar = () => {
     .then()
   }
 
-  console.log(user);
+  // console.log(user);
   const navItems = (
     <>
       <li>
