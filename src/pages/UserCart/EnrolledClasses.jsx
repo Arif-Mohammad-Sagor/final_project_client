@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const EnrolledClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const [enrollClasses, setEnrollClasses] = useState([]);
+  // const [enrollClasses, setEnrollClasses] = useState([]);
 
-  const { data, refetch} = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["enrolledClasses"],
     queryFn: async () => {
       const res = await axiosSecure(`/myEnrolledClasses`);
-      setEnrollClasses(res.data.classes);
-      return res.data;
+      // setEnrollClasses(res.data.classes);
+      return res.data.classes;
     },
   });
-  console.log(data.classes);
+console.log(data)
 
   return (
     <div className=" w-full min-h-screen bg-emerald-200">
-      <p className="capitalize text-2xl text-center py-8 mb-4"> my enrolled Classes  No:{enrollClasses.length}</p>
+      <p className="capitalize text-2xl text-center py-8 mb-4">
+        {" "}
+        my enrolled Classes No:{data?.length}
+      </p>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
@@ -33,7 +36,7 @@ const EnrolledClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {enrollClasses?.map((item, index) => (
+            {data?.map((item, index) => (
               <tr key={item._id}>
                 <th>{index + 1}</th>
                 <td>
