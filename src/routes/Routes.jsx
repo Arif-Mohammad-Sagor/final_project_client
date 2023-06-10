@@ -14,6 +14,9 @@ import MyClasses from '../pages/Classes/MyClasses';
 import PrivateRoute from './PrivateRoute';
 import MakePayment from '../pages/MakePayment/MakePayment';
 import Mypayment from '../pages/UserCart/Mypayment';
+import ManageUser from '../pages/Admin Pages/ManageUser';
+import ManageClasses from '../pages/Admin Pages/ManageClasses';
+import { Feedback } from '../pages/Admin Pages/Feedback';
 
 
 const router = createBrowserRouter([
@@ -75,7 +78,19 @@ const router = createBrowserRouter([
       },
       {
         path: "paymenthistory",
-        element:<Mypayment></Mypayment>
+        element: <Mypayment></Mypayment>,
+      },
+      {
+        path: "manageuser",
+        element: <ManageUser></ManageUser>,
+      },
+      {
+        path: "manageclass",
+        element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "/dashboard/manageclass/feedback/:id",
+        element: <Feedback></Feedback>,
       },
     ],
   },

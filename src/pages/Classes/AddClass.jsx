@@ -1,50 +1,44 @@
-import React from 'react'
-import useAuth from '../hooks/useAuth';
-import axios from 'axios';
+import React from "react";
+import useAuth from "../hooks/useAuth";
+import axios from "axios";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2';
-import useAxiosSecure from '../hooks/useAxiosSecure';
+import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 const img_hosting_token = import.meta.env.VITE_IMG_HOSTING_API;
 const AddClass = () => {
-  const { user } = useAuth();
-  const {
+const { user } = useAuth();
+const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
   const [axiosSecure] = useAxiosSecure();
+
   const onSubmit = (data) => {
-    console.log(data);
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
-    // const form = e.target;
-    // const className =form.coursename.value;
-    // const price = form.price.value;
-    // const seatsAvailable = form.seatsNumber.value;
-    // const photo = form.photo.value;
+    const formData = new FormData();
 
+    formData.append("image", data.photo[0]);
 
-const formData = new FormData();
-
-    formData.append("image",data.photo[0]);
-
-    axios.post(img_hosting_url, formData)
-      .then((response) => {
-        console.log(response.data)
-        if (response.status === 200) {
+    axios.post(img_hosting_url, formData).then((response) => {
+      // console.log(response.data);
+      if (response.status === 200) {
         const image = response.data.data.display_url;
 
-const classInfo = {
-  Image: image,
-  Name: data.coursename,
-  InstructorName: user?.displayName,
-  AvailableSeats: parseInt(data.availAbleSeats),
-  Price: parseInt(data.price),
-  studentQty: parseInt(10),
-  status: "pending",
-          };
-          console.log(classInfo);
+        const classInfo = {
+          Image: image,
+          Name: data.coursename,
+          Email: user?.email,
+          InstructorName: user?.displayName,
+          AvailableSeats: parseInt(data.availAbleSeats),
+          Price: parseInt(data.price),
+          studentQty: parseInt(0),
+          status: "pending",
+        };
+        console.log(classInfo);
         axiosSecure.post("/newClasses", classInfo).then((data) => {
           if (data.data.insertedId) {
             reset();
@@ -59,9 +53,7 @@ const classInfo = {
         });
       }
     });
-
-    // console.log(classInfo);
-  }
+  };
   return (
     <div className="w-full bg-emerald-200 h-full">
       <section className="p-6 dark:bg-gray-800 dark:text-gray-50">
@@ -162,6 +154,6 @@ const classInfo = {
       </section>
     </div>
   );
-}
+};
 
-export default AddClass
+export default AddClass;

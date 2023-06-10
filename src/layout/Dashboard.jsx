@@ -5,7 +5,9 @@ import { Link, Outlet, } from 'react-router-dom';
 const Dashboard = () => {
   // const [data] = useClassesLoader();
   // console.log(data);
-  var userRole = 'instructor';
+  // var userRole = 'instructor';
+  // var userRole = "student";
+  var userRole= 'admin';
 
 
   return (
@@ -55,13 +57,13 @@ const Dashboard = () => {
           ) : (
             <>
               <li>
-                <Link to="/dashboard"> Admin</Link>
+                <Link to="/dashboard"> Admin Home</Link>
               </li>
               <li>
-                <Link to="/dashboard"> Manage User</Link>
+                <Link to="/dashboard/manageuser"> Manage User</Link>
               </li>
               <li>
-                <Link to="/dashboard">Add something</Link>
+                <Link to="/dashboard/manageclass">Manage Classes</Link>
               </li>
             </>
           )}
