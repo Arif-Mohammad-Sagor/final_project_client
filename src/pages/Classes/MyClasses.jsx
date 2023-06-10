@@ -9,7 +9,8 @@ const MyClasses = () => {
   useEffect(() => {
       axiosSecure.get(`/myAllClasses?InstructorName=${user?.displayName}`)
           .then((data) => setMyClasses(data.data));
-   },[])
+  }, [])
+  console.log(myClasses);
   return (
     <div className="w-full h-full bg-emerald-200">
       <div className="overflow-x-auto">
@@ -42,7 +43,7 @@ const MyClasses = () => {
                   <td></td>
                 ) : (
                   <td>
-                  {item.feedback}
+                  {item.feedback.feedback}
                   </td>
                 )}
                 <td>

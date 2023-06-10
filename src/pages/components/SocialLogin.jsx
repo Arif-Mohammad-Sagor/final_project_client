@@ -22,10 +22,10 @@ const SocialLogin = () => {
        };
       //  console.log(saveUser);
        axios
-         .post(`http://localhost:5000/users`, { saveUser })
+         .post(`http://localhost:4000/addUsers`, saveUser)
          .then((response) => {
-           console.log(response);
            navigate(from, { replace: true } || '/');
+           console.log(response);
          });
      })
      .catch((error) => {

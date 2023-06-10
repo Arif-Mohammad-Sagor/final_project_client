@@ -9,7 +9,7 @@ const useClassesLoader = () => {
   const { data, refetch, isError, isLoading } = useQuery({
 
     queryKey: ["classes", user?.email],
-    enabled: !loading,
+    enabled:!!user && !loading,
     queryFn: async () => {
       const res = await axiosSecure(`/selectedClasses?email=${user?.email}`);
       return res.data;

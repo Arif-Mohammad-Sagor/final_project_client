@@ -7,28 +7,26 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser, updateUserProfile } = useAuth();
-  const navigate = useNavigate();
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm();
+const { createUser, updateUserProfile } = useAuth();
+const navigate = useNavigate();
+  const { register, handleSubmit, watch, formState: { errors }, } =useForm();
+
   const onSubmit = (data) => {
-     console.log(data);
+    //  console.log(data);
      createUser(data.email, data.password)
        .then((result) => {
          updateUserProfile(data.name, data.photo)
            .then((result) => {
-             console.log(result);
-             const saveUser = { name: data.name, email: data.email };
-             console.log(saveUser);
+            //  console.log(result);
+             const addUser = { name: data.name, email: data.email };
+             console.log(addUser);
              axios
-               .post(`http://localhost:5000/users`, {
-                 saveUser,
-               })
-               .then(() => {});
+               .post(`http://localhost:4000/addUsers`,
+                 addUser
+               )
+               .then((res) => {
+                 console.log(res);
+               });
            })
            .catch();
          console.log(result);
@@ -164,7 +162,6 @@ const SignUp = () => {
                  Didn't match with password
                   </span>
                 )}
-                <button type="submit">Submit</button>
               </div>
               <button type="submit" className="btn btn-primary">
                 Login
@@ -172,7 +169,7 @@ const SignUp = () => {
               <p>
                 Already have an account{" "}
                 <Link className="text-blue-600 underline" to="/login">
-                  Login
+                  Signup
                 </Link>
               </p>
 
