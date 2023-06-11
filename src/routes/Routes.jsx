@@ -17,6 +17,8 @@ import Mypayment from '../pages/UserCart/Mypayment';
 import ManageUser from '../pages/Admin Pages/ManageUser';
 import ManageClasses from '../pages/Admin Pages/ManageClasses';
 import { Feedback } from '../pages/Admin Pages/Feedback';
+import AdminHome from '../pages/Admin Pages/AdminHome';
+import AdminRoute from './AdminRoute';
 
 
 const router = createBrowserRouter([
@@ -66,7 +68,11 @@ const router = createBrowserRouter([
       },
       {
         path: "addclasses",
-        element: <AddClass></AddClass>,
+        element: (
+          <PrivateRoute>
+            <AddClass></AddClass>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myclasses",
@@ -74,23 +80,51 @@ const router = createBrowserRouter([
       },
       {
         path: "makepayment",
-        element: <MakePayment></MakePayment>,
+        element: (
+          <PrivateRoute>
+            <MakePayment></MakePayment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "paymenthistory",
-        element: <Mypayment></Mypayment>,
+        element: (
+          <PrivateRoute>
+            <Mypayment></Mypayment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "manageuser",
-        element: <ManageUser></ManageUser>,
+        element: (
+        <AdminRoute>
+            <ManageUser></ManageUser>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageclass",
-        element: <ManageClasses></ManageClasses>,
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manageclass/feedback/:id",
-        element: <Feedback></Feedback>,
+        element: (
+          <AdminRoute>
+            <Feedback></Feedback>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "adminhome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
     ],
   },

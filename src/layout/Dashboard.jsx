@@ -1,10 +1,11 @@
 import React from 'react'
+import { FaBookOpen, FaBookReader, FaBookmark, FaCalculator, FaHome, FaShoppingBasket, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { Link, Outlet, } from 'react-router-dom';
-// import useClassesLoader from '../pages/hooks/useClassesLoader';
+import useAdmin from '../pages/hooks/useAdmin';
 
 const Dashboard = () => {
-  // const [data] = useClassesLoader();
-  // console.log(data);
+  const [adminRole] = useAdmin();
+  console.log(adminRole);
   // var userRole = 'instructor';
   // var userRole = "student";
   var userRole= 'admin';
@@ -30,40 +31,40 @@ const Dashboard = () => {
           {userRole === "student" ? (
             <>
               <li>
-                <Link to="/"> Home</Link>
+                <Link to="/dashboard"> Home</Link>
               </li>
               <li>
-                <Link to="/dashboard/mycart"> MyCart</Link>
+                <Link to="/dashboard/mycart"><FaShoppingBasket></FaShoppingBasket> MyCart</Link>
               </li>
               <li>
-                <Link to="/dashboard/enrolledclasses">Enrolled Classes</Link>
+                <Link to="/dashboard/enrolledclasses"><FaBookmark></FaBookmark> Enrolled Classes</Link>
               </li>
               <li>
-                <Link to="/dashboard/paymenthistory"> Payment History</Link>
+                <Link to="/dashboard/paymenthistory"><FaCalculator></FaCalculator> Payment History</Link>
               </li>
             </>
           ) : userRole === "instructor" ? (
             <>
               <li>
-                <Link to="/"> Instructor Home</Link>
+                <Link to="/dashboard"><FaHome></FaHome> Instructor </Link>
               </li>
               <li>
-                <Link to="/dashboard/myclasses"> Myclasses</Link>
+                <Link to="/dashboard/myclasses"><FaBook></FaBook> Myclasses</Link>
               </li>
               <li>
-                <Link to="/dashboard/addclasses">Add Classes Classes</Link>
+                <Link to="/dashboard/addclasses"><FaBookReader></FaBookReader> Add Classes Classes</Link>
               </li>
             </>
           ) : (
             <>
               <li>
-                <Link to="/dashboard"> Admin Home</Link>
+                <Link to="/dashboard/adminhome"> <FaHome></FaHome> Admin </Link>
               </li>
               <li>
-                <Link to="/dashboard/manageuser"> Manage User</Link>
+                <Link to="/dashboard/manageuser"><FaUserAlt></FaUserAlt> Manage User</Link>
               </li>
               <li>
-                <Link to="/dashboard/manageclass">Manage Classes</Link>
+                <Link to="/dashboard/manageclass"> <FaBookOpen></FaBookOpen> Manage Classes</Link>
               </li>
             </>
           )}

@@ -5,7 +5,6 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
-    // console.log(loading, user);
 
     if (loading) {
            return <progress className="progress w-56"></progress>
