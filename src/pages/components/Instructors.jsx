@@ -14,13 +14,13 @@ useEffect(() => {
 
   return (
     <>
-      <div className="text-4xl text-center my-8"> Popular Instructor</div>
-      <div className=" w-full  ml-10 grid grid-cols-3 my-16 gap-y-8 justify-center">
+      <div className="md:text-4xl text-center my-8"> Popular Instructor</div>
+      <div className=" w-full  grid md:grid-cols-3 my-16 gap-y-8 justify-center">
         {topInstructor &&
           topInstructor?.map((classItem) => (
             <div
               key={classItem._id}
-              className={`card w-4/5 shadow-xl flex justify-center ${
+              className={`card w-4/5 mx-auto shadow-xl flex justify-center ${
                 classItem.AvailableSeats === 0 ? "bg-red-500" : " bg-base-100 "
               }`}
             >

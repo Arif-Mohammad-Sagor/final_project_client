@@ -2,23 +2,23 @@ import React from "react";
 
 const Pricing = () => {
   return (
-    <section className="py-12 dark:bg-gray-800 dark:text-gray-100">
+    <section className="py-8 mx-6 md:mx-6 flex justify-center items-center">
       <div className="container px-4 mx-auto">
         <div className="max-w-2xl mx-auto mb-10 text-center">
-          <h2 className="text-4xl font-bold lg:text-5xl">
+          <h2 className="md:text-4xl font-bold lg:text-5xl">
             Choose your best plan
           </h2>
         </div>
         <div className="flex flex-wrap items-stretch -mx-4">
           <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-            <div className="flex flex-col p-6 space-y-6 rounded shadow sm:p-8 dark:bg-gray-900">
+                      <div className="flex flex-col p-6 space-y-6
+            rounded shadow-lg sm:p-8 dark:bg-gray-900">
               <div className="space-y-2">
                 <h4 className="text-2xl font-bold">Beginner</h4>
-                <span className="text-6xl font-bold">Free</span>
+                <span className="md:text-6xl font-bold">Free</span>
               </div>
               <p className="mt-3 leading-relaxed dark:text-gray-400">
-              Access to one language course of choice
-
+                Access to one language course of choice
               </p>
               <ul className="flex-1 mb-3 dark:text-gray-400">
                 <li className="flex mb-2 space-x-2">
@@ -69,17 +69,17 @@ const Pricing = () => {
               </ul>
               <button
                 type="button"
-                className="btn btn-block text-white bg-black"
+                className="btn btn-block text-white hover:text-black bg-gray-900"
               >
                 Get Started
               </button>
             </div>
           </div>
           <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-            <div className="flex flex-col p-6 space-y-6 rounded shadow sm:p-8 dark:bg-violet-400 dark:text-gray-900">
+            <div className="flex flex-col p-6 space-y-6 rounded shadow-lg xl:p-8 dark:bg-violet-400 dark:text-gray-900">
               <div className="space-y-2">
                 <h4 className="text-2xl font-bold">Pro</h4>
-                <span className="text-6xl font-bold">
+                <span className="md:text-6xl font-bold">
                   $24
                   <span className="text-sm tracking-wide">/month</span>
                 </span>
@@ -151,17 +151,17 @@ const Pricing = () => {
               </ul>
               <button
                 type="button"
-                className="btn btn-block text-white bg-black"
+                className="btn btn-block hover:text-black text-white bg-gray-900"
               >
                 Get Started
               </button>
             </div>
           </div>
           <div className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-            <div className="p-6 space-y-6 rounded shadow sm:p-8 dark:bg-gray-900">
+            <div className="p-6 space-y-6 rounded shadow-lg sm:p-8 dark:bg-gray-900">
               <div className="space-y-2">
                 <h4 className="text-2xl font-bold">Team</h4>
-                <span className="text-6xl font-bold">
+                <span className="md:text-6xl font-bold">
                   $72
                   <span className="text-sm tracking-wide">/month</span>
                 </span>
@@ -264,7 +264,7 @@ const Pricing = () => {
               </ul>
               <button
                 type="button"
-                className="btn btn-block text-white bg-black"
+                className="btn btn-block text-white hover:text-black bg-gray-900"
               >
                 Get Started
               </button>

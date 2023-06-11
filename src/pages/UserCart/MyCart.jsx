@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 const MyCart = () => {
   const [data, refetch] = useClassesLoader();
 
-
-  // console.log(data);
   const totalPrice = data?.reduce((sum, item) => sum + item.Price, 0);
 
   const handleDelete = (id) => {

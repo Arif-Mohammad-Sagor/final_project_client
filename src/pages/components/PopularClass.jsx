@@ -14,13 +14,20 @@ const PopularClass = () => {
 
   return (
     <>
-      <div className='text-4xl text-center my-8'> Popular Classes</div>
-      <div className=" w-full  ml-10 grid grid-cols-3 my-16 gap-y-8 justify-center">
+      <div className='md:text-4xl text-center my-8'> Popular Classes</div>
+      <div className="
+     grid
+     md:grid-cols-3
+      w-full
+         my-16
+         space-y-8
+         justify-center
+         ">
         {topClasess &&
           topClasess?.map((classItem) => (
             <div
               key={classItem._id}
-              className={`card w-4/5 shadow-xl flex justify-center ${
+              className={`card w-4/5 mx-auto shadow-xl flex justify-center ${
                 classItem.AvailableSeats === 0 ? "bg-red-500" : " bg-base-100 "
               }`}
             >
