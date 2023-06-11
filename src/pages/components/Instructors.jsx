@@ -29,13 +29,6 @@ useEffect(() => {
               </figure>
               <div className="card-body">
                 <h2>InstructorName: {classItem.name}</h2>
-                {/* <p className="text-sm">
-                  InstructorName: {classItem.InstructorName}
-                </p> */}
-                {/* <p className="text-sm">
-                  AvailableSeats: {classItem.AvailableSeats}
-                </p>
-                <p className="text-sm">Price: ${classItem.Price}</p> */}
                 <p className="">Stu.Enrolled: {classItem.classesQnty}</p>
               </div>
             </div>
