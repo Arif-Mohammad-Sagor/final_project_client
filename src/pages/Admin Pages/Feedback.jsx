@@ -1,34 +1,33 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import Swal from 'sweetalert2';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Feedback = () => {
-    const { id } = useParams();
-    const [textareaValue, setTextareaValue] = useState("");
-    const handleTextareaChange = (event) => {
-      setTextareaValue(event.target.value);
-    };
+  const { id } = useParams();
+  const [textareaValue, setTextareaValue] = useState("");
+  const handleTextareaChange = (event) => {
+    setTextareaValue(event.target.value);
+  };
 
-    const handleFeedback = (e) => {
+  const handleFeedback = (e) => {
+    e.preventDefault();
+    const feedbackContent = textareaValue;
 
-e.preventDefault()
-const feedbackContent = textareaValue;
-
-fetch(`http://localhost:4000/updateMyInstructorClass/${id}`, {
-  method: "PATCH",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ feedback: feedbackContent }),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    if (data.modifiedCount > 0) {
-      Swal.fire("Your feedback is sent");
-    }
-    console.log(data);
-  });
-    }
+    fetch(`http://localhost:4000/updateMyInstructorClass/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ feedback: feedbackContent }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire("Your feedback is sent");
+        }
+        console.log(data);
+      });
+  };
   return (
     <>
       <p className="text-xl font-bold"> FeedBack Page</p>
@@ -48,4 +47,4 @@ fetch(`http://localhost:4000/updateMyInstructorClass/${id}`, {
       </div>
     </>
   );
-}
+};

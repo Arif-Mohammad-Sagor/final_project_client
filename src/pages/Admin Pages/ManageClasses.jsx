@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const ManageClasses = () => {
 
   const [allClasses, setAllClasses] = useState();
-
   const [axiosSecure] = useAxiosSecure();
+
   const { data, refetch } = useQuery({
     queryKey: ["/allclasses"],
     queryFn: async () => {
@@ -18,13 +18,34 @@ const ManageClasses = () => {
   });
   console.log(allClasses);
 
-  const handleApprove = (id) => {
-    // axios.patch(`/updateMyClass/${id}`)
-    //     .then(res => {
-    //         console.log(res.data);
-    // })
-    fetch(`http://localhost:4000/updateMyClass/${id}`, {
+  const handleApprove = (id) =>{
+    console.log('hello',id);
+    const token = localStorage.getItem("access_token");
+    // Retrieve the authorization token from local storage
+
+    fetch(`http://localhost:4000/updateMyClass/${id}`,{
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+        }
+        console.log(data);
+      });
+    // console.log('heelo')
+  };
+  const handleDenial = (id) => {
+    fetch(`http://localhost:4000/updateMyClassDenial/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -34,19 +55,6 @@ const ManageClasses = () => {
         console.log(data);
       });
   };
-  const handleDenial = (id) => {
-    fetch(`http://localhost:4000/updateMyClassDenial/${id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          refetch();
-        }
-        console.log(data);
-      });
-    };
-
 
   return (
     <div>
@@ -86,7 +94,7 @@ const ManageClasses = () => {
                 {item.status === "pending" ? (
                   <>
                     <button
-                      onClick={() => handleApprove(item._id)}
+                      onClick={()=> handleApprove(item._id)}
                       disabled={item.status === "denied"}
                       className="btn btn-xs btn-primary "
                     >

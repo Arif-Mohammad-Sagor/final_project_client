@@ -1,28 +1,29 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const PopularClass = () => {
   const [topClasess, setTopClasses] = useState([]);
 
   useEffect(() => {
-     axios.get("http://localhost:4000/topClasses")
-       .then((response) => {
-         console.log(response);
-         setTopClasses(response.data);
-       });
-  }, [])
+    axios.get("http://localhost:4000/topClasses").then((response) => {
+      console.log(response);
+      setTopClasses(response.data);
+    });
+  }, []);
 
   return (
     <>
-      <div className='md:text-4xl text-center my-8'> Popular Classes</div>
-      <div className="
+      <div className="md:text-4xl text-center my-8"> Popular Classes</div>
+      <div
+        className="
      grid
      md:grid-cols-3
       w-full
          my-16
          space-y-8
          justify-center
-         ">
+         "
+      >
         {topClasess &&
           topClasess?.map((classItem) => (
             <div
@@ -46,6 +47,6 @@ const PopularClass = () => {
       </div>
     </>
   );
-}
+};
 
-export default PopularClass
+export default PopularClass;

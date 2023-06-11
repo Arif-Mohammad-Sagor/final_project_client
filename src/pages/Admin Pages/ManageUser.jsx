@@ -1,41 +1,53 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { FaTrash, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageUser = () => {
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isInstructor, setIsInstructor] = useState(true);
-  const { user } = useAuth()
+
+  const { user } = useAuth();
   const [myusers, setmyUsers] = useState([]);
+
+
   // console.log(user);
+
   const [axiosSecure] = useAxiosSecure();
-  const { refetch, data: users = [] } = useQuery({
+
+  const {  data: users = [],refetch } = useQuery({
     queryKey: ["allUsers", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/allUsers`);
-      console.log(res.data)
+      console.log(res.data);
       setmyUsers(res.data);
       return res.data;
     },
   });
+
   const handleMakeInstructor = (item) => {
-   fetch(`http://localhost:4000/allUsers/instructor/${item._id}`, {
-     method: "PATCH",
-   })
-     .then((res) => res.json())
-     .then((data) => {
-     if (data.modifiedCount > 0) {
-       refetch();
-       Swal.fire(`${item.name} has been added as a Instructor`);
-     }
-     });
+    fetch(`http://localhost:4000/allUsers/instructor/${item._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire(`${item.name} has been added as a Instructor`);
+        }
+      });
   };
   const handleMakeAdmin = (item) => {
+
+    const token = localStorage.getItem("access_token");
+  // Retrieve the authorization token from local storage
+
+
     fetch(`http://localhost:4000/allUsers/admin/${item._id}`, {
       method: "PATCH",
+       headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+    },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -60,7 +72,7 @@ const ManageUser = () => {
         <button
           onClick={() => handleMakeAdmin(item)}
           className="btn btn-primary btn-xs"
-          disabled={item.role==='admin'}
+          disabled={item.role === "admin"}
         >
           Make Admin
         </button>
@@ -69,7 +81,7 @@ const ManageUser = () => {
         <button
           onClick={() => handleMakeInstructor(item)}
           className="btn btn-primary btn-xs"
-          disabled={item.role==='instructor'}
+          disabled={item.role === "instructor"}
         >
           Make Instructor
         </button>
@@ -94,7 +106,7 @@ const ManageUser = () => {
               <th>Email</th>
               <th>Role</th>
               <th colSpan={2} className="text-center">
-               Admin Action
+                Admin Action
               </th>
               <th></th>
             </tr>

@@ -1,51 +1,53 @@
-import React from 'react'
+import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
-import SocialLogin from '../../components/SocialLogin';
-import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-const { createUser, updateUserProfile } = useAuth();
-const navigate = useNavigate();
-  const { register, handleSubmit, watch, formState: { errors }, } =useForm();
+  const { createUser, updateUserProfile } = useAuth();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     //  console.log(data);
-     createUser(data.email, data.password)
-       .then((result) => {
-         updateUserProfile(data.name, data.photo)
-           .then((result) => {
+    createUser(data.email, data.password)
+      .then((result) => {
+        updateUserProfile(data.name, data.photo)
+          .then((result) => {
             //  console.log(result);
-             const addUser = { name: data.name, email: data.email };
-             console.log(addUser);
-             axios
-               .post(`http://localhost:4000/addUsers`,
-                 addUser
-               )
-               .then((res) => {
-                 console.log(res);
-               });
-           })
-           .catch();
-         console.log(result);
-         Swal.fire({
-           icon: "success",
-           title: "Successfully user created",
-           text: "Cool",
-         });
-         navigate("/");
-       })
-       .catch((error) => {
-         Swal.fire({
-           icon: "error",
-           title: "Oops...",
-           text: `${error.message}`,
-         });
-       });
-  }
-
+            const addUser = { name: data.name, email: data.email };
+            console.log(addUser);
+            axios
+              .post(`http://localhost:4000/addUsers`, addUser)
+              .then((res) => {
+                console.log(res);
+              });
+          })
+          .catch();
+        console.log(result);
+        Swal.fire({
+          icon: "success",
+          title: "Successfully user created",
+          text: "Cool",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${error.message}`,
+        });
+      });
+  };
 
   return (
     <div className="px-16">
@@ -158,8 +160,8 @@ const navigate = useNavigate();
                   className="input input-bordered"
                 />
                 {errors.confirmPassword && (
-                  <span className='text-red-600'>
-                 Didn't match with password
+                  <span className="text-red-600">
+                    Didn't match with password
                   </span>
                 )}
               </div>
@@ -180,6 +182,6 @@ const navigate = useNavigate();
       </div>
     </div>
   );
-}
+};
 
-export default SignUp
+export default SignUp;

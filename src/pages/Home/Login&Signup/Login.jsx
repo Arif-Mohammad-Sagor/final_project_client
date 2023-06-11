@@ -76,7 +76,7 @@ const Login = () => {
                  label-text-alt
                  text-end link
                  link-hover
-                 relative -top-10 left-44"
+                 relative -top-16 left-96"
                   >
                     {passwordVisible ? (
                       <FaEyeSlash></FaEyeSlash>

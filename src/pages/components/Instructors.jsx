@@ -1,16 +1,15 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Instructors = () => {
-const [topInstructor, setTopInstructor] = useState([]);
+  const [topInstructor, setTopInstructor] = useState([]);
 
-useEffect(() => {
-  axios.get("http://localhost:4000/topInstructor").then((response) => {
-    console.log(response);
-   setTopInstructor(response.data);
-  });
-}, []);
-
+  useEffect(() => {
+    axios.get("http://localhost:4000/topInstructor").then((response) => {
+      console.log(response);
+      setTopInstructor(response.data);
+    });
+  }, []);
 
   return (
     <>
@@ -36,6 +35,6 @@ useEffect(() => {
       </div>
     </>
   );
-}
+};
 
-export default Instructors
+export default Instructors;

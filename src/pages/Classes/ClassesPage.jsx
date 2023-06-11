@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+
 
 const ClassesPage = () => {
   const [classes, setClasses] = useState([]);
@@ -14,16 +13,15 @@ const ClassesPage = () => {
   const isAdmin = false;
   const isInstructor = false;
 
-   const [axiosSecure] = useAxiosSecure();
-   const { data, refetch } = useQuery({
-     queryKey: ["/classes"],
-     queryFn: async () => {
-       const response = await axiosSecure.get("/classes");
-       setClasses(response.data);
-       return response.data;
-     },
-   });
-   console.log(data);
+  useEffect(() => {
+    fetch("http://localhost:4000/classes")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setClasses(data);
+      });
+  }, [])
+
 
   const handleEnrollment = (classItem) => {
     const {
@@ -47,7 +45,6 @@ const ClassesPage = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           navigate("/login");
-
         }
       });
     }

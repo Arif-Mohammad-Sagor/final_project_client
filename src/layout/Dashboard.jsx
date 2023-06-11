@@ -5,6 +5,7 @@ import useAdmin from '../pages/hooks/useAdmin';
 
 const Dashboard = () => {
   const [adminRole] = useAdmin();
+  console.log(adminRole);
   const userRole = adminRole?.role;
   // console.log(userRole.role);
 

@@ -47,27 +47,27 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-    useEffect(() => {
-      const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
-          setUser(currentUser);
-          // console.log('from onAuth',currentUser);
+  useEffect(() => {
+    const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log('from onAuth',currentUser);
 
-        if (currentUser) {
-          axios
-            .post("http://localhost:4000/jwt", { email: currentUser.email })
-            .then((data) => {
-              localStorage.setItem("access_token", data.data.token);
-              setLoading(false);
-            });
-        } else {
-          localStorage.removeItem("access_token");
-        }
-        setLoading(false);
-      });
-      return () => {
-        unsubscibe();
-      };
-    }, []);
+      if (currentUser) {
+        axios
+          .post("http://localhost:4000/jwt", { email: currentUser.email })
+          .then((data) => {
+            localStorage.setItem("access_token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access_token");
+      }
+      setLoading(false);
+    });
+    return () => {
+      unsubscibe();
+    };
+  }, []);
 
   const userInfo = {
     user,
