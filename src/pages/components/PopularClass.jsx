@@ -32,12 +32,11 @@ const PopularClass = () => {
                 <p className="text-sm">
                   InstructorName: {classItem.InstructorName}
                 </p>
-                <p className="text-sm">
+                {/* <p className="text-sm">
                   AvailableSeats: {classItem.AvailableSeats}
                 </p>
-                <p className="text-sm">Price: ${classItem.Price}</p>
-                <p className="text-sm">studentQty: {classItem.studentQty}</p>
-                <div className="card-actions justify-end"></div>
+                <p className="text-sm">Price: ${classItem.Price}</p> */}
+                <p className="">Stu.Enrolled: {classItem.studentQty}</p>
               </div>
             </div>
           ))}
