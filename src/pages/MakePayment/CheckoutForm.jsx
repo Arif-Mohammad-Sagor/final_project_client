@@ -56,7 +56,7 @@ const CheckoutForm = ({ data, price }) => {
     } else {
         // console.log("[PaymentMethod]", paymentMethod);
     }
-   
+
 
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecrect, {
@@ -81,7 +81,6 @@ const CheckoutForm = ({ data, price }) => {
         price,
         quantity: data?.length,
         date: new Date(),
-        status: "due",
         selectedClassItemsId: data?.map((item) => item._id),
         selectedClassItemsNames: data?.map((item) => item.Name),
         haveInAllClassItemsId: data?.map((item) => item.ClassItemId),

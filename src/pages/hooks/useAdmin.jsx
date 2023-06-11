@@ -19,7 +19,7 @@ const useAdmin = () => {
       }
     },
   });
-  console.log(adminRole);
+  // console.log(adminRole);
   return [adminRole, isAdminLoading];
 };
 export default useAdmin;

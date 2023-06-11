@@ -98,7 +98,7 @@ const ClassesPage = () => {
                   }
                   className="btn btn-primary"
                 >
-                  Enroll{" "}
+                  Select{" "}
                 </button>
               </div>
             </div>

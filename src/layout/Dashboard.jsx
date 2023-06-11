@@ -5,11 +5,8 @@ import useAdmin from '../pages/hooks/useAdmin';
 
 const Dashboard = () => {
   const [adminRole] = useAdmin();
-  console.log(adminRole);
-  // var userRole = 'instructor';
-  // var userRole = "student";
-  var userRole= 'admin';
-
+  const userRole = adminRole?.role;
+  // console.log(userRole.role);
 
   return (
     <div className="drawer lg:drawer-open">
