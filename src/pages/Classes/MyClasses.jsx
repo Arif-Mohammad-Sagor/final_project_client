@@ -43,7 +43,7 @@ const MyClasses = () => {
                   <td></td>
                 ) : (
                   <td>
-                  {item.feedback.feedback}
+                  {item?.feedback?.feedback}
                   </td>
                 )}
                 <td>

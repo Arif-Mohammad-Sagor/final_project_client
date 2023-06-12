@@ -9,10 +9,11 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const { signIn } = useAuth()
+  const { signIn,user:authUser } = useAuth()
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
 
   const handleLogin = (e) => {
@@ -26,7 +27,9 @@ const Login = () => {
                 const user = res.user;
                 setSuccess("Successfully loggedIn")
                 setError('')
-             navigate(from || '/' ,{replace:true})
+              if (!authUser) {
+                navigate(from || "/", { replace: true });
+              }
                 console.log(user)
             })
             .catch(err => {

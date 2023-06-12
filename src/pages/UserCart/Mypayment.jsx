@@ -18,7 +18,7 @@ const Mypayment = () => {
  });
  console.log(data);
   return (
-    <div className='w-full bg-purple-500 h-full text-white'>
+    <div className='w-full bg-emerald-200 h-full '>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useClassesLoader from "../hooks/useClassesLoader";
 import { FaShoppingCart } from "react-icons/fa";
@@ -9,10 +9,14 @@ import "react-tooltip/dist/react-tooltip.css";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [data] = useClassesLoader();
+  const navigate = useNavigate();
   console.log(data);
   const handleLogout = () => {
     logOut()
-      .then()
+
+      .then(() => {
+        navigate('/')
+      })
     .then()
   }
 
