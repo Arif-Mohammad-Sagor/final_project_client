@@ -1,15 +1,17 @@
 import React, {  useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../hooks/useAuth";
 
 const EnrolledClasses = () => {
   const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
   // const [enrollClasses, setEnrollClasses] = useState([]);
 
   const { data, refetch } = useQuery({
     queryKey: ["enrolledClasses"],
     queryFn: async () => {
-      const res = await axiosSecure(`/myEnrolledClasses`);
+      const res = await axiosSecure(`/myEnrolledClasses?email=${user.email}`);
       // setEnrollClasses(res.data.classes);
       return res.data.classes;
     },
