@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../hooks/useAuth";
+import login from "../../../../public/assets/login.png";
 
 const Login = () => {
   const [success, setSuccess] = useState("");
@@ -12,6 +13,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+
 
   const handleLogin = (e) => {
      e.preventDefault();
@@ -40,7 +42,7 @@ const Login = () => {
       <div className="hero min-h-screen bg-base-100">
         <div className="flex flex-col md:flex-row">
           <div className="w-1/2 p-8">
-            <img src="random.img" className="w-full  aspect-square" />
+            <img src={login} className="w-full  aspect-square" />
           </div>
           <div className="  w-1/2 flex min-h-screen items-center  bg-base-100">
             <form

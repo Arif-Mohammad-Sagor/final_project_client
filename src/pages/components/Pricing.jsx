@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import './pricing.css';
 
 const Pricing = () => {
   return (
@@ -10,9 +12,16 @@ const Pricing = () => {
           </h2>
         </div>
         <div className="flex flex-wrap items-stretch -mx-4">
-          <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-                      <div className="flex flex-col p-6 space-y-6
-            rounded shadow-lg sm:p-8 dark:bg-gray-900">
+          <motion.div
+            className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+          >
+            {/* <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} /> */}
+            <div
+              className="flex flex-col p-6 space-y-6
+            rounded shadow-lg sm:p-8 example-container"
+            >
               <div className="space-y-2">
                 <h4 className="text-2xl font-bold">Beginner</h4>
                 <span className="md:text-6xl font-bold">Free</span>
@@ -74,8 +83,13 @@ const Pricing = () => {
                 Get Started
               </button>
             </div>
-          </div>
-          <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+          </motion.div>
+
+          <motion.div
+            className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+          >
             <div className="flex flex-col p-6 space-y-6 rounded shadow-lg xl:p-8 dark:bg-violet-400 dark:text-gray-900">
               <div className="space-y-2">
                 <h4 className="text-2xl font-bold">Pro</h4>
@@ -156,8 +170,13 @@ const Pricing = () => {
                 Get Started
               </button>
             </div>
-          </div>
-          <div className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+          </motion.div>
+
+          <motion.div
+            className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+          >
             <div className="p-6 space-y-6 rounded shadow-lg sm:p-8 dark:bg-gray-900">
               <div className="space-y-2">
                 <h4 className="text-2xl font-bold">Team</h4>
@@ -269,7 +288,7 @@ const Pricing = () => {
                 Get Started
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

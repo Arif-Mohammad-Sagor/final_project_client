@@ -5,6 +5,7 @@ import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import signUp from '../../../../public/assets/login.png'
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
@@ -54,7 +55,7 @@ const SignUp = () => {
       <div className="hero min-h-screen bg-base-100">
         <div className="flex flex-col md:flex-row">
           <div className="w-1/2 p-8">
-            <img src="img" className="w-full  aspect-square" />
+            <img src={signUp} className="w-full  aspect-square" />
           </div>
           <div className="  w-1/2 flex min-h-screen items-center  bg-base-100">
             <form
