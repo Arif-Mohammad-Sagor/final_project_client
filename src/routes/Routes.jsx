@@ -19,6 +19,7 @@ import ManageClasses from '../pages/Admin Pages/ManageClasses';
 import { Feedback } from '../pages/Admin Pages/Feedback';
 import AdminHome from '../pages/Admin Pages/AdminHome';
 import AdminRoute from './AdminRoute';
+import Error from '../pages/ErrorPage/Error';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
     // layout for landing page
     path: "/",
     element: <Main></Main>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",

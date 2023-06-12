@@ -8,6 +8,7 @@ const ManageClasses = () => {
   const [allClasses, setAllClasses] = useState();
   const [axiosSecure] = useAxiosSecure();
 
+
   const { data, refetch } = useQuery({
     queryKey: ["/allclasses"],
     queryFn: async () => {
@@ -40,11 +41,12 @@ const ManageClasses = () => {
     // console.log('heelo')
   };
   const handleDenial = (id) => {
+   const token = localStorage.getItem("access_token");
     fetch(`http://localhost:4000/updateMyClassDenial/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

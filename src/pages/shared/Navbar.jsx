@@ -28,12 +28,19 @@ const Navbar = () => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+        </>
+      ) : (
+        <></>
+      )}
       <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
-      <li>
-        <NavLink to='/dashboard/mycart'>
-        <FaShoppingCart></FaShoppingCart>{data?.length}
+        <NavLink to="/dashboard/mycart">
+          <FaShoppingCart></FaShoppingCart>
+          {data?.length}
         </NavLink>
       </li>
     </>
@@ -90,7 +97,7 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          <Link to="/signup" className="btn btn-secondary">
+          <Link to="/login" className="btn btn-secondary">
             Login
           </Link>
         )}

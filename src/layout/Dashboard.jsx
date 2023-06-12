@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBookOpen, FaBookReader, FaBookmark, FaCalculator, FaHome, FaShoppingBasket, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
+import { FaBook, FaBookOpen, FaBookReader, FaBookmark, FaCalculator, FaHome, FaShoppingBasket, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { Link, Outlet, } from 'react-router-dom';
 import useAdmin from '../pages/hooks/useAdmin';
 

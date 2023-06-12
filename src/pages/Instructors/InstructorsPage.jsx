@@ -18,14 +18,11 @@ const InstructorsPage = () => {
             className="card w-4/5 flex justify-center  bg-base-100 shadow-xl"
           >
             <figure>
-              <img src={instructor.image} alt="instuctors" />
+              <img src={instructor.image} alt="instuctors" className="h-64 "/>
             </figure>
             <div className="card-body">
               <h2>Name: {instructor.name}</h2>
               <p className="text-sm">Email: {instructor.email}</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Contact</button>
-              </div>
             </div>
           </div>
         ))}

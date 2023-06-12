@@ -24,7 +24,7 @@ const Login = () => {
                 const user = res.user;
                 setSuccess("Successfully loggedIn")
                 setError('')
-             navigate(from,{replace:true})
+             navigate(from || '/' ,{replace:true})
                 console.log(user)
             })
             .catch(err => {

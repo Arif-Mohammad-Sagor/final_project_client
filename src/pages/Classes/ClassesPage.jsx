@@ -3,15 +3,16 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 
 const ClassesPage = () => {
   const [classes, setClasses] = useState([]);
   const { user } = useAuth();
   const navigate = useNavigate();
-  // TODO: HAVE TO CREATE HOOKS FOR ADMIN AND INSTRUCTOR
-  const isAdmin = false;
-  const isInstructor = false;
+  const [adminRole] = useAdmin();
+  console.log(adminRole);
+  const userRole = adminRole?.role;
 
   useEffect(() => {
     fetch("http://localhost:4000/classes")
@@ -58,14 +59,21 @@ const ClassesPage = () => {
       studentQty,
       Email: user.email,
     };
-    // console.log(selectedClassItem);
+    console.log(selectedClassItem);
+    const token = localStorage.getItem('access_token');
     axios
-      .post("http://localhost:4000/selectedClass", selectedClassItem)
+      .post("http://localhost:4000/selectedClass", selectedClassItem, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
         console.log(response);
 
         if (response.data.insertedId) {
-          refetch();
+          // refetch();
           Swal.fire("Cool!", "You have added the class to cart !", "success");
         } else {
           Swal.fire(`${response.data.message}`);
@@ -99,7 +107,7 @@ const ClassesPage = () => {
                 <button
                   onClick={() => handleEnrollment(classItem)}
                   disabled={
-                    classItem.AvailableSeats === 0 || isAdmin || isInstructor
+                    classItem.AvailableSeats === 0 || userRole==='admin' || userRole==='instructor'
                   }
                   className="btn btn-primary"
                 >

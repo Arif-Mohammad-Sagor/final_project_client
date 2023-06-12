@@ -12,17 +12,17 @@ const Mypayment = () => {
    queryKey: ["mypaymentHistory"],
    queryFn: async () => {
      const res = await axiosSecure(`/mypaymentHistory?email=${user.email}`);
-     setPHistory(res.data.paymentHistory);
+     setPHistory(res.data);
      return res.data;
    },
  });
- console.log(phistory);
+ console.log(data);
   return (
-    <div>
+    <div className='w-full bg-purple-500 h-full text-white'>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}
-          <thead className="font-bold text-xl ">
+          <thead className="font-bold text-xl text-white">
             <tr>
               <th>#</th>
               <th>Email</th>
