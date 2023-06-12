@@ -8,7 +8,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const [data,refetch] = useClassesLoader();
+  const [data] = useClassesLoader();
   console.log(data);
   const handleLogout = () => {
     logOut()
@@ -16,7 +16,6 @@ const Navbar = () => {
     .then()
   }
 
-  // console.log(user);
   const navItems = (
     <>
       <li>
@@ -47,7 +46,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-purple-700 text-white">
+    <div className="navbar bg-purple-600 text-white">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -68,15 +67,17 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="z-50 menu menu-sm dropdown-content mt-3 p-2 shadow bg-purple-600 rounded-box w-52"
           >
             {navItems}
           </ul>
         </div>
         <a className="normal-case md:text-2xl">Langu-Academy</a>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+      <div className="navbar-center  hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          {navItems}
+        </ul>
       </div>
       <div className="navbar-end">
         {user ? (
@@ -86,11 +87,10 @@ const Navbar = () => {
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user?.displayName}
                 data-tooltip-variant="light"
-
                 className="w-10 rounded-full"
                 src={user?.photoURL}
               />
-              <Tooltip id="my-tooltip" className="z-50"/>
+              <Tooltip id="my-tooltip" className="z-50" />
             </div>
             <Link onClick={handleLogout} className="btn btn-xs md:btn-sm">
               Logout
