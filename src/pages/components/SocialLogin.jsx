@@ -22,9 +22,7 @@ const SocialLogin = () => {
         };
         //  console.log(saveUser);
         axios
-          .post(`https://last-try-nuku.onrender.com/addUsers`,
-            saveUser
-          )
+          .post(`https://last-try-nuku.onrender.com/addUsers`, saveUser)
           .then((response) => {
             navigate(from, { replace: true } || "/");
             console.log(response);

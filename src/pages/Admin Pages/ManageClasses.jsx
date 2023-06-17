@@ -22,16 +22,13 @@ const ManageClasses = () => {
     const token = localStorage.getItem("access_token");
     // Retrieve the authorization token from local storage
 
-    fetch(
-      `https://last-try-nuku.onrender.com/updateMyClass/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch(`https://last-try-nuku.onrender.com/updateMyClass/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -43,16 +40,13 @@ const ManageClasses = () => {
   };
   const handleDenial = (id) => {
     const token = localStorage.getItem("access_token");
-    fetch(
-      `https://last-try-nuku.onrender.com/updateMyClassDenial/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch(`https://last-try-nuku.onrender.com/updateMyClassDenial/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

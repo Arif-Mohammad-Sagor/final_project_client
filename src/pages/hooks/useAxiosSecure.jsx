@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-  baseURL: "https://last-try-nuku.onrender.com",
+  baseURL: "https://last-try-nuku.onrender.com/",
 });
 
 const useAxiosSecure = () => {

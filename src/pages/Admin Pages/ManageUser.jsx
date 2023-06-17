@@ -23,13 +23,21 @@ const ManageUser = () => {
   });
 
   const handleMakeInstructor = (item) => {
-fetch(`https://last-try-nuku.onrender.com/allUsers/instructor/${item._id}`,
+    const token = localStorage.getItem("access_token");
+    console.log("make admin", item);
+    fetch(
+      `https://last-try-nuku.onrender.com/allUsers/instructor/${item._id}`,
       {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
+        },
       }
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
           Swal.fire(`${item.name} has been added as a Instructor`);
@@ -38,17 +46,14 @@ fetch(`https://last-try-nuku.onrender.com/allUsers/instructor/${item._id}`,
   };
   const handleMakeAdmin = (item) => {
     const token = localStorage.getItem("access_token");
-    // Retrieve the authorization token from local storage
 
-    fetch(`https://last-try-nuku.onrender.com/allUsers/admin/${item._id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-        },
-      }
-    )
+    fetch(`https://last-try-nuku.onrender.com/allUsers/admin/${item._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

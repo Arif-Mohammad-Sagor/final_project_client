@@ -10,23 +10,23 @@ export const Feedback = () => {
   };
 
   const handleFeedback = (e) => {
+    console.log("before fetch");
     e.preventDefault();
     const feedbackContent = textareaValue;
     const token = localStorage.getItem("access_token");
-
-  fetch(`https://last-try-nuku.onrender.com/updateMyInstructorClass/{id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ feedback: feedbackContent }),
-      }
-    )
+    fetch(`https://last-try-nuku.onrender.com/updateMyInstructorClass/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ feedback: feedbackContent }),
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.modifiedCount > 0) {
+          console.log("after modified");
           Swal.fire("Your feedback is sent");
         }
         console.log(data);

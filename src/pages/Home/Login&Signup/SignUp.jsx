@@ -31,9 +31,7 @@ const SignUp = () => {
             };
             console.log(addUser);
             axios
-              .post(`https://last-try-nuku.onrender.com/addUsers`,
-                addUser
-              )
+              .post(`https://last-try-nuku.onrender.com/addUsers`, addUser)
               .then((res) => {
                 console.log(res);
               });

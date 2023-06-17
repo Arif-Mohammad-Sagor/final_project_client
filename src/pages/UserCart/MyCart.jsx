@@ -5,18 +5,24 @@ import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [data, refetch] = useClassesLoader();
-
   const totalPrice = data?.reduce((sum, item) => sum + item.Price, 0);
+  const token = localStorage.getItem("access_token");
 
   const handleDelete = (id) => {
-    fetch(`https://last-try-nuku.onrender.com/selectedClasses/${id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    console.log("befor fetch", id);
+
+    fetch(`https://last-try-nuku.onrender.com/selectedClasses/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.deletedCount > 0) {
+          console.log("after fetch");
           Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
