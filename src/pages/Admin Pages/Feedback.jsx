@@ -14,10 +14,7 @@ export const Feedback = () => {
     const feedbackContent = textareaValue;
     const token = localStorage.getItem("access_token");
 
-    fetch(
-      `
-https://last-try-nuku.onrender.com/
-updateMyInstructorClass/${id}`,
+  fetch(`https://last-try-nuku.onrender.com/updateMyInstructorClass/{id}`,
       {
         method: "PATCH",
         headers: {

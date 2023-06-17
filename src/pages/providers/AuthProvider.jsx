@@ -56,9 +56,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post("
-https://last-try-nuku.onrender.com/
-jwt", {
+          .post("https://last-try-nuku.onrender.com/jwt", {
             email: currentUser.email,
           })
           .then((data) => {

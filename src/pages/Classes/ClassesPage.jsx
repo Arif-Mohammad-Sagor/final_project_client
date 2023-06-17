@@ -14,9 +14,7 @@ const ClassesPage = () => {
   const userRole = adminRole?.role;
 
   useEffect(() => {
-    fetch("
-https://last-try-nuku.onrender.com/
-classes")
+  fetch("https://last-try-nuku.onrender.com/classes")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -62,11 +60,7 @@ classes")
     console.log(selectedClassItem);
     const token = localStorage.getItem("access_token");
     axios
-      .post(
-        "
-https://last-try-nuku.onrender.com/
-selectedClass",
-        selectedClassItem,
+      .post("https://last-try-nuku.onrender.com/selectedClass",selectedClassItem,
         {
           method: "POST",
           headers: {

@@ -23,9 +23,7 @@ const ManageClasses = () => {
     // Retrieve the authorization token from local storage
 
     fetch(
-      `
-https://last-try-nuku.onrender.com/
-updateMyClass/${id}`,
+      `https://last-try-nuku.onrender.com/updateMyClass/${id}`,
       {
         method: "PATCH",
         headers: {
@@ -46,9 +44,7 @@ updateMyClass/${id}`,
   const handleDenial = (id) => {
     const token = localStorage.getItem("access_token");
     fetch(
-      `
-https://last-try-nuku.onrender.com/
-updateMyClassDenial/${id}`,
+      `https://last-try-nuku.onrender.com/updateMyClassDenial/${id}`,
       {
         method: "PATCH",
         headers: {

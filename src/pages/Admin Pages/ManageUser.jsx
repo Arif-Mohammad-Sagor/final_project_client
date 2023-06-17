@@ -23,10 +23,7 @@ const ManageUser = () => {
   });
 
   const handleMakeInstructor = (item) => {
-    fetch(
-      `
-https://last-try-nuku.onrender.com/
-allUsers/instructor/${item._id}`,
+fetch(`https://last-try-nuku.onrender.com/allUsers/instructor/${item._id}`,
       {
         method: "PATCH",
       }
@@ -43,10 +40,7 @@ allUsers/instructor/${item._id}`,
     const token = localStorage.getItem("access_token");
     // Retrieve the authorization token from local storage
 
-    fetch(
-      `
-https://last-try-nuku.onrender.com/
-allUsers/admin/${item._id}`,
+    fetch(`https://last-try-nuku.onrender.com/allUsers/admin/${item._id}`,
       {
         method: "PATCH",
         headers: {

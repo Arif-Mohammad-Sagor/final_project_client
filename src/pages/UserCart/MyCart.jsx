@@ -9,10 +9,7 @@ const MyCart = () => {
   const totalPrice = data?.reduce((sum, item) => sum + item.Price, 0);
 
   const handleDelete = (id) => {
-    fetch(
-      `
-https://last-try-nuku.onrender.com/
-selectedClasses/${id}`,
+    fetch(`https://last-try-nuku.onrender.com/selectedClasses/${id}`,
       {
         method: "DELETE",
       }

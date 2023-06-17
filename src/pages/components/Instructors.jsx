@@ -6,9 +6,7 @@ const Instructors = () => {
 
   useEffect(() => {
     axios
-      .get("
-https://last-try-nuku.onrender.com/
-topInstructor")
+      .get("https://last-try-nuku.onrender.com/topInstructor")
       .then((response) => {
         console.log(response);
         setTopInstructor(response.data);

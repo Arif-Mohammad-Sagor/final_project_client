@@ -5,9 +5,7 @@ const InstructorsPage = () => {
   const [instuctors, setInstructors] = useState([]);
   useEffect(() => {
     axios
-      .get("
-https://last-try-nuku.onrender.com/
-instructors")
+      .get("https://last-try-nuku.onrender.com/instructors")
       .then((response) => setInstructors(response.data));
   }, []);
 

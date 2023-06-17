@@ -11,15 +11,15 @@ const useAdmin = () => {
     enabled: !loading && !!user?.email,
 
     queryFn: async () => {
-      if (user?.email) {
-        const res = await axiosSecure.get(
-          `/myAllUsers/admin?email=${user?.email}`
+      if (user?.email)
+      {
+const res = await axiosSecure.get(`/myAllUsers/admin?email=${user?.email}`
         );
         return res.data;
       }
     },
   });
-  // console.log(adminRole);
+  console.log(adminRole);
   return [adminRole, isAdminLoading];
 };
 export default useAdmin;

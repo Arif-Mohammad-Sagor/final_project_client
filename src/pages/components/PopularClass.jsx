@@ -6,9 +6,7 @@ const PopularClass = () => {
 
   useEffect(() => {
     axios
-      .get("
-https://last-try-nuku.onrender.com/
-topClasses")
+      .get("https://last-try-nuku.onrender.com/topClasses")
       .then((response) => {
         console.log(response);
         setTopClasses(response.data);
