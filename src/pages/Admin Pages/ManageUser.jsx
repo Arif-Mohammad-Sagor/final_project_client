@@ -5,16 +5,14 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageUser = () => {
-
   const { user } = useAuth();
   const [myusers, setmyUsers] = useState([]);
-
 
   // console.log(user);
 
   const [axiosSecure] = useAxiosSecure();
 
-  const {  data: users = [],refetch } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["allUsers", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/allUsers`);
@@ -25,9 +23,14 @@ const ManageUser = () => {
   });
 
   const handleMakeInstructor = (item) => {
-    fetch(`http://localhost:4000/allUsers/instructor/${item._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `
+https://last-try-nuku.onrender.com/
+allUsers/instructor/${item._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -37,18 +40,21 @@ const ManageUser = () => {
       });
   };
   const handleMakeAdmin = (item) => {
-
     const token = localStorage.getItem("access_token");
-  // Retrieve the authorization token from local storage
+    // Retrieve the authorization token from local storage
 
-
-    fetch(`http://localhost:4000/allUsers/admin/${item._id}`, {
-      method: "PATCH",
-       headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-    },
-    })
+    fetch(
+      `
+https://last-try-nuku.onrender.com/
+allUsers/admin/${item._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

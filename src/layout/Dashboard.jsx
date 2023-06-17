@@ -2,10 +2,13 @@ import React from 'react'
 import { FaBook, FaBookOpen, FaBookReader, FaBookmark, FaCalculator, FaHome, FaShoppingBasket, FaShoppingCart, FaUserAlt } from 'react-icons/fa';
 import { Link, Outlet, } from 'react-router-dom';
 import useAdmin from '../pages/hooks/useAdmin';
+import useAuth from '../pages/hooks/useAuth';
 
 const Dashboard = () => {
   const [adminRole] = useAdmin();
   console.log(adminRole);
+  const { loading } = useAuth();
+  
   const userRole = adminRole?.role;
   // console.log(userRole.role);
 

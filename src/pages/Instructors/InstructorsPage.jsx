@@ -5,7 +5,9 @@ const InstructorsPage = () => {
   const [instuctors, setInstructors] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/instructors")
+      .get("
+https://last-try-nuku.onrender.com/
+instructors")
       .then((response) => setInstructors(response.data));
   }, []);
 
@@ -18,7 +20,7 @@ const InstructorsPage = () => {
             className="card w-4/5 flex justify-center  bg-base-100 shadow-xl"
           >
             <figure>
-              <img src={instructor.image} alt="instuctors" className="h-64 "/>
+              <img src={instructor.image} alt="instuctors" className="h-64 " />
             </figure>
             <div className="card-body">
               <h2>Name: {instructor.name}</h2>

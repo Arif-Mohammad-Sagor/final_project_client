@@ -40,6 +40,8 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+
+
   const updateUserProfile = (name, photo) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
@@ -50,11 +52,15 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscibe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log('from onAuth',currentUser);
+      console.log("from onAuth", currentUser);
 
       if (currentUser) {
         axios
-          .post("http://localhost:4000/jwt", { email: currentUser.email })
+          .post("
+https://last-try-nuku.onrender.com/
+jwt", {
+            email: currentUser.email,
+          })
           .then((data) => {
             localStorage.setItem("access_token", data.data.token);
             setLoading(false);

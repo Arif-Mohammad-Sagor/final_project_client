@@ -9,9 +9,14 @@ const MyCart = () => {
   const totalPrice = data?.reduce((sum, item) => sum + item.Price, 0);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:4000/selectedClasses/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `
+https://last-try-nuku.onrender.com/
+selectedClasses/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

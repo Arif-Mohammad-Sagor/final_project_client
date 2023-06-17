@@ -18,11 +18,16 @@ const SocialLogin = () => {
         const saveUser = {
           name: loggedUser.displayName,
           email: loggedUser.email,
-          image:loggedUser.photoURL
+          image: loggedUser.photoURL,
         };
         //  console.log(saveUser);
         axios
-          .post(`http://localhost:4000/addUsers`, saveUser)
+          .post(
+            `
+https://last-try-nuku.onrender.com/
+addUsers`,
+            saveUser
+          )
           .then((response) => {
             navigate(from, { replace: true } || "/");
             console.log(response);

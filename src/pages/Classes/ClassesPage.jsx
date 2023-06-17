@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 
-
 const ClassesPage = () => {
   const [classes, setClasses] = useState([]);
   const { user } = useAuth();
@@ -15,14 +14,15 @@ const ClassesPage = () => {
   const userRole = adminRole?.role;
 
   useEffect(() => {
-    fetch("http://localhost:4000/classes")
-      .then(res => res.json())
-      .then(data => {
+    fetch("
+https://last-try-nuku.onrender.com/
+classes")
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
         setClasses(data);
       });
-  }, [])
-
+  }, []);
 
   const handleEnrollment = (classItem) => {
     const {
@@ -60,15 +60,21 @@ const ClassesPage = () => {
       Email: user.email,
     };
     console.log(selectedClassItem);
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem("access_token");
     axios
-      .post("http://localhost:4000/selectedClass", selectedClassItem, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        "
+https://last-try-nuku.onrender.com/
+selectedClass",
+        selectedClassItem,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
 
@@ -107,7 +113,9 @@ const ClassesPage = () => {
                 <button
                   onClick={() => handleEnrollment(classItem)}
                   disabled={
-                    classItem.AvailableSeats === 0 || userRole==='admin' || userRole==='instructor'
+                    classItem.AvailableSeats === 0 ||
+                    userRole === "admin" ||
+                    userRole === "instructor"
                   }
                   className="btn btn-primary"
                 >

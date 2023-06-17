@@ -5,10 +5,14 @@ const Instructors = () => {
   const [topInstructor, setTopInstructor] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/topInstructor").then((response) => {
-      console.log(response);
-      setTopInstructor(response.data);
-    });
+    axios
+      .get("
+https://last-try-nuku.onrender.com/
+topInstructor")
+      .then((response) => {
+        console.log(response);
+        setTopInstructor(response.data);
+      });
   }, []);
 
   return (

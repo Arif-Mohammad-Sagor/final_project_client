@@ -4,10 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
-
   const [allClasses, setAllClasses] = useState();
   const [axiosSecure] = useAxiosSecure();
-
 
   const { data, refetch } = useQuery({
     queryKey: ["/allclasses"],
@@ -19,18 +17,23 @@ const ManageClasses = () => {
   });
   console.log(allClasses);
 
-  const handleApprove = (id) =>{
-    console.log('hello',id);
+  const handleApprove = (id) => {
+    console.log("hello", id);
     const token = localStorage.getItem("access_token");
     // Retrieve the authorization token from local storage
 
-    fetch(`http://localhost:4000/updateMyClass/${id}`,{
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `
+https://last-try-nuku.onrender.com/
+updateMyClass/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -41,14 +44,19 @@ const ManageClasses = () => {
     // console.log('heelo')
   };
   const handleDenial = (id) => {
-   const token = localStorage.getItem("access_token");
-    fetch(`http://localhost:4000/updateMyClassDenial/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const token = localStorage.getItem("access_token");
+    fetch(
+      `
+https://last-try-nuku.onrender.com/
+updateMyClassDenial/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -96,7 +104,7 @@ const ManageClasses = () => {
                 {item.status === "pending" ? (
                   <>
                     <button
-                      onClick={()=> handleApprove(item._id)}
+                      onClick={() => handleApprove(item._id)}
                       disabled={item.status === "denied"}
                       className="btn btn-xs btn-primary "
                     >

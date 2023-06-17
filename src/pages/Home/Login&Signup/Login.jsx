@@ -9,36 +9,36 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const { signIn,user:authUser } = useAuth()
+  const { signIn, user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
   const from = location.state?.from?.pathname || "/";
+
   console.log(from);
 
-
   const handleLogin = (e) => {
-     e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-        signIn(email, password)
-            .then(res => {
-                const user = res.user;
-                setSuccess("Successfully loggedIn")
-                setError('')
-              if (!authUser) {
-                navigate(from || "/", { replace: true });
-              }
-                console.log(user)
-            })
-            .catch(err => {
-                setError(err.message);
-                setSuccess('');
-        })
+    signIn(email, password)
+      .then((res) => {
+        const user = res.user;
+        setSuccess("Successfully loggedIn");
+        setError("");
 
-  }
+      navigate(from, { replace: true });
+        // navigate(from || "/", { replace: true });
 
+        console.log(user);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setSuccess("");
+      });
+  };
 
   return (
     <div className="px-16">
@@ -104,7 +104,7 @@ const Login = () => {
               </div>
               <p className="text-red-600">{error}</p>
               <p className="text-green-600">{success}</p>
-              <SocialLogin/>
+              <SocialLogin />
             </form>
           </div>
         </div>

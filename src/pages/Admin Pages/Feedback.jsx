@@ -12,16 +12,21 @@ export const Feedback = () => {
   const handleFeedback = (e) => {
     e.preventDefault();
     const feedbackContent = textareaValue;
-       const token = localStorage.getItem("access_token");
+    const token = localStorage.getItem("access_token");
 
-    fetch(`http://localhost:4000/updateMyInstructorClass/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ feedback: feedbackContent }),
-    })
+    fetch(
+      `
+https://last-try-nuku.onrender.com/
+updateMyInstructorClass/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ feedback: feedbackContent }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

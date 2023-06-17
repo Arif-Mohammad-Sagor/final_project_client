@@ -32,7 +32,7 @@ const Hero = () => {
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <img src={slider7} />
+          <img src={slider4} />
         </SwiperSlide>
         <SwiperSlide>
           {" "}
@@ -40,7 +40,7 @@ const Hero = () => {
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <img src={slider4} />
+          <img src={slider7} />
         </SwiperSlide>
         <SwiperSlide>
           {" "}

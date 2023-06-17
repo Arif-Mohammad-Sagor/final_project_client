@@ -7,10 +7,14 @@ import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user,loading, logOut } = useAuth();
   const [data] = useClassesLoader();
   const navigate = useNavigate();
-  console.log(data);
+  // console.log(data);
+  if (loading) {
+    // console.log('it is loading');
+    return <progress className="progress w-56"></progress>;
+  }
   const handleLogout = () => {
     logOut()
 

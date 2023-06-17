@@ -5,7 +5,7 @@ import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
-import signUp from '../../../../public/assets/login.png'
+import signUp from "../../../../public/assets/login.png";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
@@ -24,10 +24,19 @@ const SignUp = () => {
         updateUserProfile(data.name, data.photo)
           .then((result) => {
             //  console.log(result);
-            const addUser = { name: data.name, email: data.email,image:data.photo };
+            const addUser = {
+              name: data.name,
+              email: data.email,
+              image: data.photo,
+            };
             console.log(addUser);
             axios
-              .post(`http://localhost:4000/addUsers`, addUser)
+              .post(
+                `
+https://last-try-nuku.onrender.com/
+addUsers`,
+                addUser
+              )
               .then((res) => {
                 console.log(res);
               });

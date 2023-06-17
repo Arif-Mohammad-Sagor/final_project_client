@@ -5,10 +5,14 @@ const PopularClass = () => {
   const [topClasess, setTopClasses] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/topClasses").then((response) => {
-      console.log(response);
-      setTopClasses(response.data);
-    });
+    axios
+      .get("
+https://last-try-nuku.onrender.com/
+topClasses")
+      .then((response) => {
+        console.log(response);
+        setTopClasses(response.data);
+      });
   }, []);
 
   return (

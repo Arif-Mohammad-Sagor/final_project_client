@@ -6,7 +6,6 @@ import useAuth from "../hooks/useAuth";
 const EnrolledClasses = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
-  // const [enrollClasses, setEnrollClasses] = useState([]);
 
   const { data, refetch } = useQuery({
     queryKey: ["enrolledClasses"],
@@ -16,7 +15,7 @@ const EnrolledClasses = () => {
       return res.data.classes;
     },
   });
-console.log(data)
+// console.log(data)
 
   return (
     <div className=" w-full min-h-screen bg-emerald-200">
